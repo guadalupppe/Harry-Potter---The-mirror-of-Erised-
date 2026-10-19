@@ -1,0 +1,167 @@
+/* =========================================================
+   ESTILOS.CSS — Ficción interactiva "El Espejo de Erised"
+   Hecho por MARÍA GUADALUPE GÓMEZ GILL
+   ---------------------------------------------------------
+   DECISIÓN CROMÁTICA: paleta de dorado (#E8C15A) y lavanda
+   (#B7A4E8) sobre azul nocturno (#120E24), para dar un clima
+   mágico, nocturno y melancólico.
+   DECISIÓN SOBRE LOS ENLACES: subrayado punteado celeste que,
+   al pasar el mouse, se vuelve sólido y dorado.
+   ========================================================= */
+
+
+/* ---------- 1. CUERPO DE LA PÁGINA ---------- */
+body {
+  background-color: #120E24;   /* azul nocturno */
+  margin: 0;                   /* sin margen exterior */
+  padding: 40px 16px;          /* aire arriba/abajo y a los costados (celulares) */
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;          /* evita scroll horizontal por el zoom del fondo */
+}
+
+
+/* ---------- 2. FONDO CON IMAGEN (fijo, a color, opacidad 0.45, zoom lento) ---------- */
+body::before {
+  content: "";
+  position: fixed;             /* queda fijo detrás de todo el contenido */
+  inset: 0;                    /* ocupa toda la pantalla */
+  background-image: url("ThemirrorofErised.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.45;               /* imagen a color, semitransparente */
+  z-index: -2;                 /* detrás de la viñeta y del contenido */
+  animation: zoomLento 40s ease-in-out infinite alternate;
+}
+
+/* Animación de zoom lento de 40 segundos */
+@keyframes zoomLento {
+  from { transform: scale(1); }
+  to   { transform: scale(1.15); }
+}
+
+
+/* ---------- 3. VIÑETA OSCURA EN LOS BORDES ---------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  /* centro transparente que se oscurece hacia los bordes */
+  background: radial-gradient(ellipse at center, #120E2400 40%, #120E24E6 100%);
+  z-index: -1;                 /* entre la imagen y el contenido */
+  pointer-events: none;        /* no bloquea los clics */
+}
+
+
+/* ---------- 4. CONTENEDOR DE TEXTO ---------- */
+.contenedor {
+  max-width: 800px;            /* ancho máximo */
+  padding: 40px;               /* espacio interno */
+  margin: 0 auto;              /* centrado */
+  background-color: #120E24CC; /* azul nocturno semitransparente (CC = 80%) */
+  border: 1px solid #E8C15A;   /* borde dorado de 1px */
+  box-sizing: border-box;
+  animation: aparecer 1.5s ease-in;  /* fade de entrada */
+}
+
+
+/* ---------- 5. PIE DE PÁGINA (misma caja que el contenedor) ---------- */
+footer {
+  max-width: 800px;
+  padding: 20px 40px;
+  margin: 30px auto 0 auto;
+  background-color: #120E24CC;
+  border: 1px solid #E8C15A;
+  box-sizing: border-box;
+  text-align: center;
+  animation: aparecer 1.5s ease-in;
+}
+
+footer p {
+  margin: 6px 0;
+}
+
+
+/* ---------- 6. ANIMACIÓN DE ENTRADA (fade de 1.5 s) ---------- */
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* ---------- 7. TÍTULO PRINCIPAL ---------- */
+h1 {
+  font-family: "Almendra", serif;
+  font-size: 48px;
+  color: #E8C15A;              /* dorado */
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Línea decorativa dorada centrada debajo del h1 */
+h1::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background-color: #E8C15A;
+  margin: 16px auto 0 auto;    /* centrada */
+}
+
+
+/* ---------- 8. SUBTÍTULOS ---------- */
+h2 {
+  font-family: "Almendra", serif;
+  font-size: 28px;
+  color: #B7A4E8;              /* lavanda */
+}
+
+
+/* ---------- 9. TEXTO NARRATIVO ---------- */
+p {
+  font-family: "Lora", serif;
+  font-size: 19px;
+  color: #EFE9F5;              /* blanco lavanda */
+  line-height: 1.7;            /* interlineado */
+}
+
+
+/* ---------- 10. ENLACES ---------- */
+a {
+  font-family: "Lora", serif;
+  color: #8FD3F4;              /* celeste */
+  font-weight: bold;
+  text-decoration: underline dotted;          /* subrayado punteado */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* transición suave */
+}
+
+a:hover {
+  color: #E8C15A;              /* se vuelve dorado */
+  text-decoration: underline solid;           /* subrayado sólido */
+}
+
+
+/* ---------- 11. IMAGEN (centrada y adaptable) ---------- */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto;           /* centrada */
+  border: 1px solid #E8C15A;
+}
+
+
+/* ---------- 12. VIDEO EMBEBIDO (centrado y adaptable) ---------- */
+iframe {
+  display: block;
+  max-width: 100%;
+  margin: 20px auto;
+  border: 1px solid #E8C15A;
+}
+
+
+/* ---------- 13. LISTA DE OPCIONES ---------- */
+.opciones p {
+  margin: 12px 0;
+}
